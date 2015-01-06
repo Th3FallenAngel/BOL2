@@ -54,6 +54,7 @@ function OnStart()
 --		TheMenu.Items:Section("Item Settings", "Item Settings")
 --		TheMenu.Items:Boolean("usedfg", "Use Deathfire Grasp", true) ]]
 --		TheMenu.Items:Boolean("use", "Use ", true) ]]
+--      TheMenu.Items:Boolean("use", "Use", true) ]]
 
 		TheMenu:Section('Keys', 'Keys Selection')
 		TheMenu:KeyBinding('combokey', 'Combo', 'SPACE')
@@ -125,7 +126,7 @@ function Combo()
 				Qready = false
 			end
 			
-			if target_diestance < player.range and Wready
+			if target_distance < player.range and Wready
 				player:CastSpell(1, Target)
 				Wready = false
 			end
@@ -134,10 +135,12 @@ function Combo()
 				player:CastSpell(2, Target)
 				Eready = false
 			
-			if target_diestance < player.range and Rready then
+			if target_distance < player.range and Rready then
 				player:CastSpell(3, Target)
 				Rready = false
 			end
+			
+			if target_distance < player.range and dfgready then
 		end
 	end
 end
